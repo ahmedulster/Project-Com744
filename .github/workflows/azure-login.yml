@@ -1,5 +1,4 @@
 name: Azure ML Job Submission
-
 on:
   push:
     branches:
@@ -8,29 +7,30 @@ on:
   pull_request:
     branches:
       - main
-
 jobs:
   submit-job:
     runs-on: ubuntu-latest
-
     steps:
       # Step 1: Checkout the repository
       - name: Checkout code
         uses: actions/checkout@v3
-
+      
       # Step 2: Log in to Azure
       - name: Log in to Azure
         uses: azure/login@v1
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
-
+      
       # Step 3: Set up Azure CLI and Install Azure ML CLI Extension
       - name: Install Azure CLI and ML extension
         run: |
           curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
           az extension add --name ml -y
-
-      # Step 4: Submit an Azure ML job
+      
+      # Step 4: Debug path and submit Azure ML job
       - name: Submit Azure ML job
         run: |
-          az ml job create --file production/job.yaml --workspace-name Com774-Ahmed --resource-group Com774-Ahmed --subscription 669918f5-7bd1-4f56-8754-381d6e6e1504
+          pwd
+          ls -la
+          ls -la production/
+          az ml job create --file ./production/job.yaml --workspace-name Com774-Ahmed --resource-group Com774-Ahmed --subscription 669918f5-7bd1-4f56-8754-381d6e6e1504
