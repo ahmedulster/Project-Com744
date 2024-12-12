@@ -1,0 +1,26 @@
+name: Azure Login Test
+
+# Trigger workflow on push to the main branch
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  login-test:
+    runs-on: ubuntu-latest
+
+    steps:
+    # Step 1: Checkout the repository
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    # Step 2: Log in to Azure using the credentials from the secret
+    - name: Log in to Azure
+      uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+    # Step 3: Show Azure account details
+    - name: Show Azure account
+      run: az account show
