@@ -31,8 +31,3 @@ jobs:
       run: |
         az ml job create --file production/job.yaml --workspace-name Com774-Ahmed --resource-group Com774-Ahmed --subscription 669918f5-7bd1-4f56-8754-381d6e6e1504
 
-
-    # Step 5: Debug job submission
-    - name: Debug job submission
-      run: |
-        az ml job list --workspace-name Com774-Ahmed --resource-group Com774-Ahmed --subscription 669918f5-7bd1-4f56-8754-381d6e6e1504
