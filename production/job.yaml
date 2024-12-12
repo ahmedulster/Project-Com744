@@ -9,4 +9,4 @@ description: Human Activity Recognition classification
 inputs:
   training_data:
     type: uri_file
-    path: azureml:HAR_dataset:1
+    path: azureml:HAR_dataset:1 
