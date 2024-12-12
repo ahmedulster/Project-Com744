@@ -1,0 +1,12 @@
+$schema: https://azuremlschemas.azureedge.net/latest/commandJob.schema.json
+code: .
+command: python model1.py --trainingdata ${{inputs.training_data}}
+
+environment: azureml://registries/azureml/environments/sklearn-1.1/versions/14
+compute: azureml:Ahmed
+experiment_name: Com774-Ahmed
+description: Human Activity Recognition classification
+inputs:
+  training_data:
+    type: uri_file
+    path: azureml:HAR_dataset:1
